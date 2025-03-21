@@ -71,6 +71,7 @@ public class MainController implements Initializable {
 
     @FXML
     private void exitAction(ActionEvent event) {
+        System.exit(0);
     }
 
 }
