@@ -49,31 +49,57 @@ public class MainController implements Initializable {
         // TODO
     }    
     
+    
+    /** 
+     * @param event
+     */
     @FXML
     private void displayGradeAction(ActionEvent event) {
         txaOutput.appendText("You clicked the Display Grades button\n");
     }
 
+    
+    /** 
+     * @param event
+     */
     @FXML
     private void findIdAction(ActionEvent event) {
         txaOutput.appendText("You clicked the Find ID button\n");
     }
 
+    
+    /** 
+     * @param event
+     */
     @FXML
     private void resultsInRangeAction(ActionEvent event) {
         txaOutput.appendText("You clicked the Mark Range button\n");
     }
 
+    
+    /** 
+     * @param event
+     */
     @FXML
     private void displayStatsAction(ActionEvent event) {
         txaOutput.appendText("You clicked the Stats button\n");
     }
 
+    
+    /** 
+     * @param event
+     * A method to clear the text area
+     */
     @FXML
     private void clearAction(ActionEvent event) {
         txaOutput.clear();
     }
 
+    
+    /** 
+     * @param event
+     * A method to exit the program
+     */
     @FXML
     private void exitAction(ActionEvent event) {
         System.exit(0);
