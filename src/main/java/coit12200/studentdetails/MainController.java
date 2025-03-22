@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 /**
  * FXML Controller class
  *
- * @author xEnde
+ * @author Jacob Duckworth
  */
 public class MainController implements Initializable {
 
@@ -51,22 +51,27 @@ public class MainController implements Initializable {
     
     @FXML
     private void displayGradeAction(ActionEvent event) {
+        txaOutput.appendText("You clicked the Display Grades button\n");
     }
 
     @FXML
     private void findIdAction(ActionEvent event) {
+        txaOutput.appendText("You clicked the Find ID button\n");
     }
 
     @FXML
     private void resultsInRangeAction(ActionEvent event) {
+        txaOutput.appendText("You clicked the Mark Range button\n");
     }
 
     @FXML
     private void displayStatsAction(ActionEvent event) {
+        txaOutput.appendText("You clicked the Stats button\n");
     }
 
     @FXML
     private void clearAction(ActionEvent event) {
+        txaOutput.clear();
     }
 
     @FXML
