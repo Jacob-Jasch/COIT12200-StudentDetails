@@ -93,6 +93,9 @@ public class MainController implements Initializable {
     @FXML
     private void clearAction(ActionEvent event) {
         txaOutput.clear();
+        txtMarkHigh.clear();
+        txtMarkLow.clear();
+        txtStudentId.clear();
     }
 
     
