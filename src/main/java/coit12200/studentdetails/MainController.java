@@ -14,8 +14,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 /**
- * FXML Controller class
- *
+ * This class is the controller for the main FXML file. It handles the actions of the buttons and the text area.
+ * It also initializes the data set and displays the data in the text area.
+ * 
  * @author Jacob Duckworth
  */
 public class MainController implements Initializable {

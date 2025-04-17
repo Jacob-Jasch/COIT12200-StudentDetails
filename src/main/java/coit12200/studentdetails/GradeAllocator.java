@@ -1,6 +1,8 @@
 package coit12200.studentdetails;
 
 /**
+ * This class is used to determine the grade of a student based on their marks in three assessments.
+ *  
  * @author Jacob Duckworth
  */
 public class GradeAllocator {
