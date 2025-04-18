@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package coit12200.studentdetails;
 
 import java.net.URL;
@@ -21,56 +17,98 @@ import javafx.scene.control.TextField;
  */
 public class MainController implements Initializable {
 
-
+    /** The text area to display the output */
     @FXML
     private TextArea txaOutput;
+    /** The button to display the grades */
     @FXML
     private Button btnDisplayGrades;
+    /** The button to display the grades */
     @FXML
     private Button btnFindID;
+    /** The button to display the grades in a range */
     @FXML
     private Button btnMarkRange;
+    /** The button to display the statistics */
     @FXML
     private Button btnStats;
+    /** The text field to enter the student ID */
     @FXML
     private TextField txtStudentId;
+    /** The text field to enter the lower mark */
     @FXML
     private TextField txtMarkLow;
+    /** The text field to enter the upper mark */
     @FXML
     private TextField txtMarkHigh;
+    /** The button to clear the text area and text fields */
     @FXML
     private Button btnClear;
+    /** The button to exit the application */
     @FXML
     private Button btnExit;
+    private GradeAnalyser gradeAnalyser;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        txaOutput.setText("Welcome to the Student Grade System\n");
     }    
     
     
     /** 
-     * @param event
+     * A method to display the grades of the students in the text area.
+     * It gets the ordered list of students from the GradeAnalyser class and displays their details in the text area.
+     * 
+     * @param event the event that triggered the action
      */
     @FXML
     private void displayGradeAction(ActionEvent event) {
-        txaOutput.appendText("You clicked the Display Grades button\n");
+        txaOutput.clear(); // Optional: clear previous output
+        if (gradeAnalyser.getOrderedList() == null) {
+            txaOutput.setText("Error: No data.\n");
+            return;
+        }
+    
+        for (int i = 0; i < gradeAnalyser.getOrderedList().size(); i++) {
+            Student student = gradeAnalyser.getOrderedList().get(i);
+            txaOutput.appendText(student.toString() + "\n");
+        }
     }
 
     
     /** 
-     * @param event
+     * A method to find a student by their ID and display their details in the text area.
+     * It gets the ID from the text field and calls the Find method in the GradeAnalyser class.
+     * @param event the event that triggered the action
+     * 
      */
     @FXML
-    private void findIdAction(ActionEvent event) {
-        txaOutput.appendText("You clicked the Find ID button\n");
+    private void findIdAction(ActionEvent event) {       
+        String id = txtStudentId.getText().trim().toUpperCase();
+        
+        if (id.isEmpty()) {
+            txaOutput.setText("Please enter a Student ID.\n");
+            return;
+        }
+
+        Student student = gradeAnalyser.find(id);
+        if (student != null) {
+            clearAction(event);
+            txaOutput.setText(student.toString() + "\n");
+        } else {
+            txaOutput.setText("Student with ID " + id + " not found.\n");
+        }
     }
 
     
     /** 
-     * @param event
+     * A method to display the students in a range of marks.
+     * It gets the lower and upper marks from the text fields and calls the GetStudentRecordInRange method in the GradeAnalyser class.
+     * 
+     * @param event the event that triggered the action
      */
     @FXML
     private void resultsInRangeAction(ActionEvent event) {
@@ -78,8 +116,11 @@ public class MainController implements Initializable {
     }
 
     
-    /** 
-     * @param event
+    /**
+     * A method to display the statistics of the students.
+     * It calls the medianMark, averageMark, maximum and minimum methods in the GradeAnalyser class and displays the results in the text area. 
+     * 
+     * @param event the event that triggered the action
      */
     @FXML
     private void displayStatsAction(ActionEvent event) {
@@ -88,8 +129,10 @@ public class MainController implements Initializable {
 
     
     /** 
-     * @param event
-     * A method to clear the text area
+     * A method to clear the text area and the text fields.
+     * It clears the text area and the text fields for student ID, lower mark and upper mark.
+     * 
+     * @param event the event that triggered the action
      */
     @FXML
     private void clearAction(ActionEvent event) {
@@ -101,12 +144,23 @@ public class MainController implements Initializable {
 
     
     /** 
-     * @param event
-     * A method to exit the program
+     * A method to exit the application.
+     * It closes the application when the exit button is clicked.
+     * 
+     * @param event the event that triggered the action
      */
     @FXML
     private void exitAction(ActionEvent event) {
         System.exit(0);
+    }
+
+    /**
+     * This method injects the GradeAnalyser object into the controller.
+     * 
+     * @param gradeAnalyser The GradeAnalyser object to be injected
+     */
+    public void inject(GradeAnalyser gradeAnalyser) {
+        this.gradeAnalyser = gradeAnalyser;
     }
 
 }
