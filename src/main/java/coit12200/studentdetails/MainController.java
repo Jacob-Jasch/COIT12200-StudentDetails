@@ -124,7 +124,26 @@ public class MainController implements Initializable {
      */
     @FXML
     private void displayStatsAction(ActionEvent event) {
-        txaOutput.appendText("You clicked the Stats button\n");
+        try {
+            clearAction(event);
+    
+            double average = gradeAnalyser.averageMark();
+            double median = gradeAnalyser.medianMark();
+            int maximum = gradeAnalyser.Maximum();
+            int minimum = gradeAnalyser.Minimum();
+    
+            String stats = "Class Statistics\n";
+            stats = stats + "---------------------\n";
+            stats = stats + "Average Mark = " + average + "\n";
+            stats = stats + "Median Mark  = " + median + "\n";
+            stats = stats + "Highest Mark = " + maximum + "\n";
+            stats = stats + "Lowest Mark  = " + minimum + "\n";
+    
+            txaOutput.setText(stats);
+    
+        } catch (EmptyListException e) {
+            txaOutput.setText("There are no students in the list.\n");
+        }
     }
 
     

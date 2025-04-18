@@ -1,5 +1,6 @@
 package coit12200.studentdetails;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -90,8 +91,28 @@ public class GradeAnalyser {
      * This method is used to get the median mark of the students.
      * @return double the median mark of the students
      */
-    public double medianMark() {
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+    public double medianMark() throws EmptyListException {
+        if (studentHashMap.isEmpty()) {
+            throw new EmptyListException("No students available.");
+        }
+    
+        ArrayList<Student> list = new ArrayList<>(studentHashMap.values());
+        int[] marks = new int[list.size()];
+    
+        for (int i = 0; i < list.size(); i++) {
+            marks[i] = list.get(i).total();
+        }
+    
+        Arrays.sort(marks);
+    
+        int size = marks.length;
+        int middle = size / 2;
+    
+        if (size % 2 == 0) {
+            return (marks[middle - 1] + marks[middle]) / 2.0;
+        } else {
+            return marks[middle];
+        }
     }
 
     
@@ -99,8 +120,18 @@ public class GradeAnalyser {
      * This method is used to get the average mark of the students.
      * @return double the average mark of the students
      */
-    public double averageMark() {
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+    public double averageMark() throws EmptyListException {
+        if (studentHashMap.isEmpty()) {
+            throw new EmptyListException("No students available.");
+        }
+
+        double total = 0;
+        ArrayList<Student> list = new ArrayList<>(studentHashMap.values());
+        for (int i = 0; i < list.size(); i++) {
+            Student student = list.get(i);
+            total = total + student.total();
+        }
+        return total / list.size();
     }
 
     
@@ -108,8 +139,21 @@ public class GradeAnalyser {
      * This method is used to get the maximum mark of the students.
      * @return int the maximum mark of the students
      */
-    public int Maximum() {
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+    public int Maximum() throws EmptyListException {
+        if (studentHashMap.isEmpty()) {
+            throw new EmptyListException("No students available.");
+        }
+    
+        ArrayList<Student> list = new ArrayList<>(studentHashMap.values());
+        int max = list.get(0).total(); // Set to first value to avoid using Integer.MIN_VALUE
+    
+        for (int i = 1; i < list.size(); i++) {
+            int mark = list.get(i).total();
+            if (mark > max) {
+                max = mark;
+            }
+        }
+        return max;
     }
 
     
@@ -117,8 +161,21 @@ public class GradeAnalyser {
      * This method is used to get the minimum mark of the students.
      * @return int the minimum mark of the students
      */
-    public int Minimum() {
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+    public int Minimum() throws EmptyListException {
+        if (studentHashMap.isEmpty()) {
+            throw new EmptyListException("No students available.");
+        }
+    
+        ArrayList<Student> list = new ArrayList<>(studentHashMap.values());
+        int min = list.get(0).total();
+    
+        for (int i = 1; i < list.size(); i++) {
+            int mark = list.get(i).total();
+            if (mark < min) {
+                min = mark;
+            }
+        }
+        return min;
     }
 
     /**
