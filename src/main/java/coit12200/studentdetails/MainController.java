@@ -3,6 +3,7 @@ package coit12200.studentdetails;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import coit12200.studentdetails.GradeAnalyser.RangeValidation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -66,7 +67,7 @@ public class MainController implements Initializable {
      */
     @FXML
     private void displayGradeAction(ActionEvent event) {
-        txaOutput.clear(); // Optional: clear previous output
+        txaOutput.clear(); 
         if (gradeAnalyser.getOrderedList() == null) {
             txaOutput.setText("Error: No data.\n");
             return;
@@ -112,7 +113,29 @@ public class MainController implements Initializable {
      */
     @FXML
     private void resultsInRangeAction(ActionEvent event) {
-        txaOutput.appendText("You clicked the Mark Range button\n");
+        String lowerMark = txtMarkLow.getText().trim();
+        String upperMark = txtMarkHigh.getText().trim();
+
+        // Validate the range
+        RangeValidation validation = gradeAnalyser.ValidateRanges(lowerMark, upperMark);
+        if (!validation.result()) {
+            txaOutput.setText(validation.message());
+            return;
+        }
+
+        int lower = validation.range().lower();
+        int upper = validation.range().upper();
+
+        Student[] studentsInRange = gradeAnalyser.GetStudentRecordInRange(lower, upper);
+
+        clearAction(event);
+        if (studentsInRange.length == 0) {
+            txaOutput.setText("No students found in the specified range.");
+        } else {
+            for (Student student : studentsInRange) {
+                txaOutput.appendText(student.toString() + "\n");
+            }
+        }
     }
 
     
@@ -131,15 +154,13 @@ public class MainController implements Initializable {
             double median = gradeAnalyser.medianMark();
             int maximum = gradeAnalyser.Maximum();
             int minimum = gradeAnalyser.Minimum();
-    
-            String stats = "Class Statistics\n";
-            stats = stats + "---------------------\n";
-            stats = stats + "Average Mark = " + average + "\n";
-            stats = stats + "Median Mark  = " + median + "\n";
-            stats = stats + "Highest Mark = " + maximum + "\n";
-            stats = stats + "Lowest Mark  = " + minimum + "\n";
-    
-            txaOutput.setText(stats);
+
+            txaOutput.setText("Class Statistics\n");
+            txaOutput.appendText("---------------------\n");
+            txaOutput.appendText("Average Mark = " + average + "\n");
+            txaOutput.appendText("Median Mark  = " + median + "\n");
+            txaOutput.appendText("Highest Mark = " + maximum + "\n");
+            txaOutput.appendText("Lowest Mark  = " + minimum + "\n");
     
         } catch (EmptyListException e) {
             txaOutput.setText("There are no students in the list.\n");

@@ -68,10 +68,29 @@ public class GradeAnalyser {
     /** 
      * This method is used to validate the ranges of marks for the students.
      * 
+     * @param lowerMark the lower mark of the range
+     * @param upperMark the upper mark of the range
      * @return RangeValidation an object containing the result of the validation.
      */
-    public RangeValidation ValidateRanges() {
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+    public RangeValidation ValidateRanges(String lowerMark, String upperMark) {
+        if (lowerMark.isEmpty() || upperMark.isEmpty()) {
+            return new RangeValidation(false, null, "Please enter both lower and upper marks.");
+        }
+        int lower = Integer.parseInt(lowerMark);
+        int upper = Integer.parseInt(upperMark);
+        if (lower < 0 || upper < 0) {
+            return new RangeValidation(false, null, "Marks cannot be negative.");
+        }
+        if (lower > upper) {
+            return new RangeValidation(false, null, "Lower mark cannot be greater than upper mark.");
+        }
+        if (lower == upper) {
+            return new RangeValidation(false, null, "Lower and upper marks cannot be the same.");
+        }
+        if (lower > 100 || upper > 100) {
+            return new RangeValidation(false, null, "Marks cannot be greater than 100.");
+        }
+        return new RangeValidation(true, new Range(lower, upper), "Valid");
     }
 
     
@@ -83,13 +102,22 @@ public class GradeAnalyser {
      * @return Student[] an array of Student objects within the specified range
      */
     public Student[] GetStudentRecordInRange(int lowerMark, int upperMark) {
-        throw new java.lang.UnsupportedOperationException("Not supported yet.");
+        ArrayList<Student> result = new ArrayList<Student>();
+        for (int i = 0; i < orderedList.size(); i++) {
+            Student student = orderedList.get(i);
+            int tot = student.total();
+            if (tot >= lowerMark && tot <= upperMark) {
+                result.add(student);
+            }
+        }
+        return result.toArray(new Student[0]);
     }
 
     
     /** 
      * This method is used to get the median mark of the students.
      * @return double the median mark of the students
+     * @throws EmptyListException if the list of students is empty
      */
     public double medianMark() throws EmptyListException {
         if (studentHashMap.isEmpty()) {
@@ -119,6 +147,7 @@ public class GradeAnalyser {
     /** 
      * This method is used to get the average mark of the students.
      * @return double the average mark of the students
+     * @throws EmptyListException if the list of students is empty
      */
     public double averageMark() throws EmptyListException {
         if (studentHashMap.isEmpty()) {
@@ -138,6 +167,7 @@ public class GradeAnalyser {
     /** 
      * This method is used to get the maximum mark of the students.
      * @return int the maximum mark of the students
+     * @throws EmptyListException if the list of students is empty
      */
     public int Maximum() throws EmptyListException {
         if (studentHashMap.isEmpty()) {
@@ -160,6 +190,7 @@ public class GradeAnalyser {
     /** 
      * This method is used to get the minimum mark of the students.
      * @return int the minimum mark of the students
+     * @throws EmptyListException if the list of students is empty
      */
     public int Minimum() throws EmptyListException {
         if (studentHashMap.isEmpty()) {

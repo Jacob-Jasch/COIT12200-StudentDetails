@@ -21,9 +21,9 @@ public class GradeAnalyserTest {
             {5, 16, 25}};
 
         Student[] expected = {
-            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44,  "HD"),
-            new Student("S35", "Bruce", "Donaldson", 5, 16, 25,  "SA"),
-            new Student("S20", "David", "Brown", 12, 9, 24,  "F")};
+            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44, "HD"),
+            new Student("S35", "Bruce", "Donaldson", 5, 16, 25, "SA"),
+            new Student("S20", "David", "Brown", 12, 9, 24, "F")};
 
         DataSet dataSet = new DataSet(studentDetails, studentMarks);
         GradeAnalyser gradeAnalyser = new GradeAnalyser(dataSet);
@@ -33,9 +33,9 @@ public class GradeAnalyserTest {
     @Test
     void gradeAnalyserGetOrderedListWithStudentListTest() {
         Student[] expected = {
-            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44,  "HD"),
-            new Student("S35", "Bruce", "Donaldson", 5, 16, 25,  "SA"),
-            new Student("S20", "David", "Brown", 12, 9, 24,  "F")};
+            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44, "HD"),
+            new Student("S35", "Bruce", "Donaldson", 5, 16, 25, "SA"),
+            new Student("S20", "David", "Brown", 12, 9, 24, "F")};
 
         GradeAnalyser gradeAnalyser = new GradeAnalyser(expected);
         assertArrayEquals(expected, gradeAnalyser.getOrderedList().toArray());
@@ -44,9 +44,9 @@ public class GradeAnalyserTest {
     @Test
     public void findWhenFoundTest() {
         Student[] data = {
-            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44,  "HD"),
-            new Student("S35", "Bruce", "Donaldson", 5, 16, 25,  "SA"),
-            new Student("S20", "David", "Brown", 12, 9, 24,  "F")
+            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44, "HD"),
+            new Student("S35", "Bruce", "Donaldson", 5, 16, 25, "SA"),
+            new Student("S20", "David", "Brown", 12, 9, 24, "F")
         };
         String id = "S10";
         GradeAnalyser ga = new GradeAnalyser(data);
@@ -58,9 +58,9 @@ public class GradeAnalyserTest {
     @Test
     public void findWhenNotFoundTest() {
         Student[] data = {
-            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44,  "HD"),
-            new Student("S35", "Bruce", "Donaldson", 5, 16, 25,  "SA"),
-            new Student("S20", "David", "Brown", 12, 9, 24,  "F")
+            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44, "HD"),
+            new Student("S35", "Bruce", "Donaldson", 5, 16, 25, "SA"),
+            new Student("S20", "David", "Brown", 12, 9, 24, "F")
         };
         String id = "S55";
         GradeAnalyser ga = new GradeAnalyser(data);
@@ -73,9 +73,9 @@ public class GradeAnalyserTest {
     public void findWhenDuplicateIDTest()
     {
         Student[] data = {
-            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44,  "HD"),
-            new Student("S20", "Bruce", "Donaldson", 5, 16, 25,  "SA"),
-            new Student("S20", "David", "Brown", 12, 9, 24,  "F")
+            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44, "HD"),
+            new Student("S20", "Bruce", "Donaldson", 5, 16, 25, "SA"),
+            new Student("S20", "David", "Brown", 12, 9, 24, "F")
         };
         String id = "S20";
         GradeAnalyser ga = new GradeAnalyser(data);
@@ -88,9 +88,9 @@ public class GradeAnalyserTest {
     public void findWhenEmptyIDTest()
     {
         Student[] data = {
-            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44,  "HD"),
-            new Student("S20", "Bruce", "Donaldson", 5, 16, 25,  "SA"),
-            new Student("S20", "David", "Brown", 12, 9, 24,  "F")
+            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44, "HD"),
+            new Student("S20", "Bruce", "Donaldson", 5, 16, 25, "SA"),
+            new Student("S20", "David", "Brown", 12, 9, 24, "F")
         };
         String id = "";
         GradeAnalyser ga = new GradeAnalyser(data);
@@ -102,9 +102,9 @@ public class GradeAnalyserTest {
     @Test
     public void averageMarkValidTest() {
         Student[] data = {
-            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44,  "HD"),
-            new Student("S35", "Bruce", "Donaldson", 5, 16, 25,  "SA"),
-            new Student("S20", "David", "Brown", 12, 9, 25,  "F")
+            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44, "HD"),
+            new Student("S35", "Bruce", "Donaldson", 5, 16, 25, "SA"),
+            new Student("S20", "David", "Brown", 12, 9, 25, "F")
         };
         GradeAnalyser ga = new GradeAnalyser(data);
         double expResult = (20 + 28 + 44 + 5 + 16 + 25 + 12 + 9 + 25) / (double) data.length;
@@ -132,9 +132,9 @@ public class GradeAnalyserTest {
     @Test
     public void medianMarkValidTest() {
         Student[] data = {
-            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44,  "HD"),
-            new Student("S35", "Bruce",     "Donaldson", 5,  16, 25,  "SA"),
-            new Student("S20", "David",     "Brown",     12, 9,  25,  "F")
+            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44, "HD"),
+            new Student("S35", "Bruce", "Donaldson", 5, 16, 25, "SA"),
+            new Student("S20", "David", "Brown", 12, 9, 25, "F")
         };
         GradeAnalyser ga = new GradeAnalyser(data);
 
@@ -155,7 +155,7 @@ public class GradeAnalyserTest {
         GradeAnalyser ga = new GradeAnalyser(new Student[]{
             new Student("S10","Elizabeth","Jenkins",-20,-28,-44,"HD"),
             new Student("S35","Bruce","Donaldson", -5,-16,-25,"SA"),
-            new Student("S20","David","Brown",   -12,-9,-25,"F")
+            new Student("S20","David","Brown", -12,-9,-25,"F")
         });
         assertEquals(-46.0, ga.medianMark(), 0.0001);
     }
@@ -164,9 +164,9 @@ public class GradeAnalyserTest {
     @Test
     public void maximumValidTest() {
         Student[] data = {
-            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44,  "HD"),
-            new Student("S35", "Bruce",     "Donaldson", 5,  16, 25,  "SA"),
-            new Student("S20", "David",     "Brown",     12, 9,  25,  "F")
+            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44, "HD"),
+            new Student("S35", "Bruce", "Donaldson", 5, 16, 25, "SA"),
+            new Student("S20", "David", "Brown", 12, 9, 25, "F")
         };
         GradeAnalyser ga = new GradeAnalyser(data);
 
@@ -187,7 +187,7 @@ public class GradeAnalyserTest {
         Student[] data = {
             new Student("S10","Elizabeth","Jenkins",-20,-28,-44,"HD"),
             new Student("S35","Bruce","Donaldson", -5,-16,-25,"SA"),
-            new Student("S20","David","Brown",   -12,-9,-25,"F")
+            new Student("S20","David","Brown", -12,-9,-25,"F")
         };
         GradeAnalyser ga = new GradeAnalyser(data);
     
@@ -199,9 +199,9 @@ public class GradeAnalyserTest {
     @Test
     public void minimumValidTest() {
         Student[] data = {
-            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44,  "HD"),
-            new Student("S35", "Bruce",     "Donaldson", 5,  16, 25,  "SA"),
-            new Student("S20", "David",     "Brown",     12, 9,  25,  "F")
+            new Student("S10", "Elizabeth", "Jenkins", 20, 28, 44, "HD"),
+            new Student("S35", "Bruce", "Donaldson", 5, 16, 25, "SA"),
+            new Student("S20", "David", "Brown", 12, 9, 25, "F")
         };
         GradeAnalyser ga = new GradeAnalyser(data);
 
@@ -222,7 +222,7 @@ public class GradeAnalyserTest {
         Student[] data = {
             new Student("S10","Elizabeth","Jenkins",-20,-28,-44,"HD"),
             new Student("S35","Bruce","Donaldson", -5,-16,-25,"SA"),
-            new Student("S20","David","Brown",   -12,-9,-25,"F")
+            new Student("S20","David","Brown", -12,-9,-25,"F")
         };
         GradeAnalyser ga = new GradeAnalyser(data);
     
@@ -230,4 +230,71 @@ public class GradeAnalyserTest {
         int result    = ga.Minimum();
         assertEquals(expResult, result);
     }
+
+    @Test
+    public void getStudentRecordInRangeValidTest() {
+        Student[] data = {
+            new Student("S10", "Elizabeth", "Jenkins", 10, 10, 15, "HD"),
+            new Student("S35", "Bruce", "Donaldson", 15,  26, 25, "SA"),
+            new Student("S20", "David", "Brown", 12, 8, 12, "F")
+        };
+        GradeAnalyser ga = new GradeAnalyser(data);
+        int lower = 30;
+        int upper = 50;
+
+        Student[] expected = {
+            new Student("S10", "Elizabeth", "Jenkins", 10, 10, 15, "HD"),
+            new Student("S20", "David", "Brown", 12, 8, 12, "F")
+        };
+
+        assertArrayEquals(expected, ga.GetStudentRecordInRange(lower, upper));
+    }
+
+    @Test
+    public void getStudentRecordInRangeEmptyTest() {
+        Student[] data = {};
+        GradeAnalyser ga = new GradeAnalyser(data);
+        int lower = 30;
+        int upper = 50;
+
+        Student[] expected = {};
+
+        assertArrayEquals(expected, ga.GetStudentRecordInRange(lower, upper));
+    }
+
+    @Test
+    public void getStudentRecordInRangeNegativeTest() {
+        Student[] data = {
+            new Student("S10", "Elizabeth", "Jenkins", -10, -10, -15, "HD"),
+            new Student("S35", "Bruce", "Donaldson", -15, -26, -25, "SA"),
+            new Student("S20", "David", "Brown", -12, -8, -12, "F")
+        };
+        GradeAnalyser ga = new GradeAnalyser(data);
+        int lower = -50;
+        int upper = -30;
+
+        Student[] expected = {
+            new Student("S10", "Elizabeth", "Jenkins", -10, -10, -15, "HD"),
+            new Student("S20", "David", "Brown", -12, -8, -12, "F")
+        };
+
+        assertArrayEquals(expected, ga.GetStudentRecordInRange(lower, upper));
+    }
+
+    @Test
+    public void getStudentRecordInRangeInvalidTest() {
+        Student[] data = {
+            new Student("S10", "Elizabeth", "Jenkins", 10, 10, 15, "HD"),
+            new Student("S35", "Bruce", "Donaldson", 15, 26, 25, "SA"),
+            new Student("S20", "David", "Brown", 12, 8, 12, "F")
+        };
+        GradeAnalyser ga = new GradeAnalyser(data);
+        int lower = 50;
+        int upper = 30;
+
+        Student[] expected = {};
+
+        assertArrayEquals(expected, ga.GetStudentRecordInRange(lower, upper));
+    }
+    
 }
