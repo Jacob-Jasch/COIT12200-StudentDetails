@@ -55,6 +55,7 @@ public class MainController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // Set the default text in the text area
         txaOutput.setText("Welcome to the Student Grade System\n");
     }    
     
@@ -68,11 +69,13 @@ public class MainController implements Initializable {
     @FXML
     private void displayGradeAction(ActionEvent event) {
         txaOutput.clear(); 
+        // Check if the ordered list is null
         if (gradeAnalyser.getOrderedList() == null) {
             txaOutput.setText("Error: No data.\n");
             return;
         }
-    
+        
+        // iterate through the ordered list and display each student's details
         for (int i = 0; i < gradeAnalyser.getOrderedList().size(); i++) {
             Student student = gradeAnalyser.getOrderedList().get(i);
             txaOutput.appendText(student.toString() + "\n");
@@ -90,12 +93,15 @@ public class MainController implements Initializable {
     private void findIdAction(ActionEvent event) {       
         String id = txtStudentId.getText().trim().toUpperCase();
         
+        // Check if the ID is empty
         if (id.isEmpty()) {
             txaOutput.setText("Please enter a Student ID.\n");
             return;
         }
 
+        //Search for the student in the list
         Student student = gradeAnalyser.find(id);
+        // Check if the student is found
         if (student != null) {
             clearAction(event);
             txaOutput.setText(student.toString() + "\n");
@@ -113,6 +119,7 @@ public class MainController implements Initializable {
      */
     @FXML
     private void resultsInRangeAction(ActionEvent event) {
+        // Get the lower and upper marks from the text fields
         String lowerMark = txtMarkLow.getText().trim();
         String upperMark = txtMarkHigh.getText().trim();
 
@@ -126,13 +133,16 @@ public class MainController implements Initializable {
         int lower = validation.range().lower();
         int upper = validation.range().upper();
 
+        // Get the students in the specified range
         Student[] studentsInRange = gradeAnalyser.GetStudentRecordInRange(lower, upper);
 
         clearAction(event);
+        // Check if there are any students in the range
         if (studentsInRange.length == 0) {
             txaOutput.setText("No students found in the specified range.");
         } else {
-            for (Student student : studentsInRange) {
+            for (int i = 0; i < studentsInRange.length; i++) {
+                Student student = studentsInRange[i];
                 txaOutput.appendText(student.toString() + "\n");
             }
         }
@@ -149,12 +159,14 @@ public class MainController implements Initializable {
     private void displayStatsAction(ActionEvent event) {
         try {
             clearAction(event);
-    
+            
+            // Get the statistics from the GradeAnalyser class
             double average = gradeAnalyser.averageMark();
             double median = gradeAnalyser.medianMark();
             int maximum = gradeAnalyser.Maximum();
             int minimum = gradeAnalyser.Minimum();
 
+            // Display the statistics in the text area
             txaOutput.setText("Class Statistics\n");
             txaOutput.appendText("---------------------\n");
             txaOutput.appendText("Average Mark = " + average + "\n");

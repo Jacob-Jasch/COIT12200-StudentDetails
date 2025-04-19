@@ -68,8 +68,7 @@ public class GradeAllocator {
      * @param a1Mark Assessment 1 mark max 20
      * @param a2Mark Assessment 2 mark max 30
      * @param a3Mark Assessment 3 mark max 50
-     * @return boolean Whether the student is eligible for a supplementary exam or
-     *         not
+     * @return boolean Whether the student is eligible for a supplementary exam or not
      */
     private boolean supplementary(int a1Mark, int a2Mark, int a3Mark) {
         int failedCount = 0;

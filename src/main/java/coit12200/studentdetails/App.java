@@ -39,6 +39,7 @@ public class App extends Application {
         // inject the analyser into the controller
         controller.inject(analyser);
         
+        // set the scene to the main FXML file
         scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);

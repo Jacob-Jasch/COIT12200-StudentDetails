@@ -18,6 +18,7 @@ public record Student(String id, String firstName, String lastName, int a1, int 
 
     @Override
     public String toString() {
+        // Format the output string to display the student details
         return String.format("%s: %-14s%-14s %2d %2d %2d   total: %3d  grade: %2s",
             id, firstName, lastName, a1, a2, a3, total(), grade);
     }

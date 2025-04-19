@@ -66,22 +66,28 @@ public class DataSet {
             String firstName = details[i][1];
             String lastName = details[i][2];
 
+            // Validate the student details
             if (id.isEmpty()) {
                 id = "Invalid";
             }
+            // Validate the first and last names
             if (firstName.isEmpty()) {
                 firstName = "Invalid";
             }
+            // Validate the last name
             if (lastName.isEmpty()) {
                 lastName = "Invalid";
             }
 
+            // set the marks
             int a1 = marks[i][0];
             int a2 = marks[i][1];
             int a3 = marks[i][2];
 
+            // set the grade based on the marks
             String grade = grader.determineGrade(a1, a2, a3);
 
+            //set the student object
             students[i] = new Student(id, firstName, lastName, a1, a2, a3, grade);
         }
         return students;
@@ -91,6 +97,7 @@ public class DataSet {
      * This method sorts the students array in descending order based on their total marks using a selection sort.
      */
     private void sortByTotalMark() {
+        // selection sort algorithm to sort the students by total marks
         for (int i = 0; i < students.length - 1; i++) {
             int maxIndex = i;
             for (int j = i + 1; j < students.length; j++) {
