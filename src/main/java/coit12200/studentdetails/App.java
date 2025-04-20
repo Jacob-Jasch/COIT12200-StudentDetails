@@ -35,7 +35,7 @@ public class App extends Application {
         GradeAnalyser analyser = new GradeAnalyser(data);
         
         // get the reference to the controller object
-        MainController controller = loader.getController();
+        Controller controller = loader.getController();
         // inject the analyser into the controller
         controller.inject(analyser);
         

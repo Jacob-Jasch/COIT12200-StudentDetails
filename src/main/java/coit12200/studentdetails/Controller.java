@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
  * 
  * @author Jacob Duckworth
  */
-public class MainController implements Initializable {
+public class Controller implements Initializable {
 
     /** The text area to display the output */
     @FXML
@@ -124,7 +124,7 @@ public class MainController implements Initializable {
         String upperMark = txtMarkHigh.getText().trim();
 
         // Validate the range
-        RangeValidation validation = gradeAnalyser.ValidateRanges(lowerMark, upperMark);
+        RangeValidation validation = gradeAnalyser.validateRanges(lowerMark, upperMark);
         if (!validation.result()) {
             txaOutput.setText(validation.message());
             return;
@@ -134,7 +134,7 @@ public class MainController implements Initializable {
         int upper = validation.range().upper();
 
         // Get the students in the specified range
-        Student[] studentsInRange = gradeAnalyser.GetStudentRecordInRange(lower, upper);
+        Student[] studentsInRange = gradeAnalyser.getStudentRecordInRange(lower, upper);
 
         clearAction(event);
         // Check if there are any students in the range
@@ -163,8 +163,8 @@ public class MainController implements Initializable {
             // Get the statistics from the GradeAnalyser class
             double average = gradeAnalyser.averageMark();
             double median = gradeAnalyser.medianMark();
-            int maximum = gradeAnalyser.Maximum();
-            int minimum = gradeAnalyser.Minimum();
+            int maximum = gradeAnalyser.maximum();
+            int minimum = gradeAnalyser.minimum();
 
             // Display the statistics in the text area
             txaOutput.setText("Class Statistics\n");

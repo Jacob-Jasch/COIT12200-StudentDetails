@@ -60,7 +60,7 @@ public class GradeAnalyser {
      * @param upperMark the upper mark of the range
      * @return RangeValidation an object containing the result of the validation.
      */
-    public RangeValidation ValidateRanges(String lowerMark, String upperMark) {
+    public RangeValidation validateRanges(String lowerMark, String upperMark) {
         // Check if the input is empty
         if (lowerMark.isEmpty() || upperMark.isEmpty()) {
             return new RangeValidation(false, null, "Please enter both lower and upper marks.");
@@ -92,7 +92,7 @@ public class GradeAnalyser {
      * @param upperMark the upper mark of the range
      * @return Student[] an array of Student objects within the specified range
      */
-    public Student[] GetStudentRecordInRange(int lowerMark, int upperMark) {
+    public Student[] getStudentRecordInRange(int lowerMark, int upperMark) {
         // Create a new list to store the students within the range
         ArrayList<Student> result = new ArrayList<Student>();
         // Iterate through the ordered list of students and check if their total marks are within the range
@@ -169,7 +169,7 @@ public class GradeAnalyser {
      * @return int the maximum mark of the students
      * @throws EmptyListException if the list of students is empty
      */
-    public int Maximum() throws EmptyListException {
+    public int maximum() throws EmptyListException {
         // Check if the studentHashMap is empty
         if (studentHashMap.isEmpty()) {
             throw new EmptyListException("No students available.");
@@ -196,7 +196,7 @@ public class GradeAnalyser {
      * @return int the minimum mark of the students
      * @throws EmptyListException if the list of students is empty
      */
-    public int Minimum() throws EmptyListException {
+    public int minimum() throws EmptyListException {
         // Check if the studentHashMap is empty
         if (studentHashMap.isEmpty()) {
             throw new EmptyListException("No students available.");

@@ -139,7 +139,7 @@ public class GradeAnalyserTest {
         GradeAnalyser ga = new GradeAnalyser(data);
 
         double expResult = 46.0;
-        double result    = ga.medianMark();
+        double result = ga.medianMark();
         assertEquals(expResult, result, 0.0001);
     }
     
@@ -171,7 +171,7 @@ public class GradeAnalyserTest {
         GradeAnalyser ga = new GradeAnalyser(data);
 
         int expResult = 92;
-        int result    = ga.Maximum();
+        int result = ga.maximum();
         assertEquals(expResult, result);
     }
 
@@ -179,7 +179,7 @@ public class GradeAnalyserTest {
     public void maximumEmptyTest() {
         Student[] data = {};
         GradeAnalyser ga = new GradeAnalyser(data);
-        assertThrows(EmptyListException.class, () -> ga.Maximum());
+        assertThrows(EmptyListException.class, () -> ga.maximum());
     }
 
     @Test
@@ -192,7 +192,7 @@ public class GradeAnalyserTest {
         GradeAnalyser ga = new GradeAnalyser(data);
     
         int expResult = -46;
-        int result    = ga.Maximum();
+        int result = ga.maximum();
         assertEquals(expResult, result);
     }
 
@@ -206,7 +206,7 @@ public class GradeAnalyserTest {
         GradeAnalyser ga = new GradeAnalyser(data);
 
         int expResult = 46;
-        int result    = ga.Minimum();
+        int result    = ga.minimum();
         assertEquals(expResult, result);
     }
 
@@ -214,7 +214,7 @@ public class GradeAnalyserTest {
     public void minimumEmptyTest() {
         Student[] data = {};
         GradeAnalyser ga = new GradeAnalyser(data);
-        assertThrows(EmptyListException.class, () -> ga.Minimum());
+        assertThrows(EmptyListException.class, () -> ga.minimum());
     }
 
     @Test
@@ -227,7 +227,7 @@ public class GradeAnalyserTest {
         GradeAnalyser ga = new GradeAnalyser(data);
     
         int expResult = -92;
-        int result    = ga.Minimum();
+        int result = ga.minimum();
         assertEquals(expResult, result);
     }
 
@@ -247,7 +247,7 @@ public class GradeAnalyserTest {
             new Student("S20", "David", "Brown", 12, 8, 12, "F")
         };
 
-        assertArrayEquals(expected, ga.GetStudentRecordInRange(lower, upper));
+        assertArrayEquals(expected, ga.getStudentRecordInRange(lower, upper));
     }
 
     @Test
@@ -259,7 +259,7 @@ public class GradeAnalyserTest {
 
         Student[] expected = {};
 
-        assertArrayEquals(expected, ga.GetStudentRecordInRange(lower, upper));
+        assertArrayEquals(expected, ga.getStudentRecordInRange(lower, upper));
     }
 
     @Test
@@ -278,7 +278,7 @@ public class GradeAnalyserTest {
             new Student("S20", "David", "Brown", -12, -8, -12, "F")
         };
 
-        assertArrayEquals(expected, ga.GetStudentRecordInRange(lower, upper));
+        assertArrayEquals(expected, ga.getStudentRecordInRange(lower, upper));
     }
 
     @Test
@@ -294,7 +294,7 @@ public class GradeAnalyserTest {
 
         Student[] expected = {};
 
-        assertArrayEquals(expected, ga.GetStudentRecordInRange(lower, upper));
+        assertArrayEquals(expected, ga.getStudentRecordInRange(lower, upper));
     }
     
 }

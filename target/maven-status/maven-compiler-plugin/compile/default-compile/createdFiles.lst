@@ -1,5 +1,10 @@
+coit12200\studentdetails\GradeAnalyser$Range.class
 coit12200\studentdetails\MainController.class
-coit12200\studentdetails\GradeAllocator.class
 module-info.class
+coit12200\studentdetails\EmptyListException.class
+coit12200\studentdetails\GradeAnalyser$RangeValidation.class
+coit12200\studentdetails\DataSet.class
+coit12200\studentdetails\GradeAnalyser.class
+coit12200\studentdetails\GradeAllocator.class
 coit12200\studentdetails\App.class
 coit12200\studentdetails\Student.class
